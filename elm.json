@@ -3,7 +3,7 @@
     "name": "linsyking/elm-monad",
     "summary": "Monads for Elm",
     "license": "BSD-3-Clause",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "exposed-modules": {
         "Monads": [
             "Monad.Maybe",
