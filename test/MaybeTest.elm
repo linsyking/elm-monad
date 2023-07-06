@@ -1,4 +1,4 @@
-module Test exposing (..)
+module MaybeTest exposing (..)
 
 import Monad.Maybe as MaybeM
 import Monad.List as ListM

@@ -28,7 +28,7 @@ type Writer w a
     = Writer ( a, List w )
 
 
-{-| return function for State
+{-| return function for Writer
 -}
 return : a -> Writer w a
 return x =

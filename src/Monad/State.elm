@@ -38,8 +38,8 @@ return x =
 {-| Run the state
 -}
 runState : State s a -> s -> ( a, s )
-runState (State f) x =
-    f x
+runState (State f) =
+    f
 
 
 {-| bind function for State
