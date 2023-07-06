@@ -1,4 +1,4 @@
-module WriterTest exposing (..)
+module Test.WriterTest exposing (..)
 
 import Monad.Writer exposing (..)
 import String exposing (fromInt)
