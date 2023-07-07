@@ -25,9 +25,16 @@ parent x =
 
 maternalGrandfatherBind : Sheep -> Maybe Sheep
 maternalGrandfatherBind s =
-    MaybeM.bind (Just s) <| \x ->
+    MaybeM.bind (mother s) <| \x ->
     MaybeM.bind (father x) <| \y ->
     MaybeM.return y
+
+
+maternalGrandfatherChain : Sheep -> Maybe Sheep
+maternalGrandfatherChain s =
+    mother s |> Maybe.andThen (\x ->
+    father x |> Maybe.andThen (\y->
+    Just y))
 
 
 grandParent: Sheep -> List Sheep

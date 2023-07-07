@@ -1,7 +1,7 @@
 module Monad.Reader exposing
     ( Reader(..)
     , return, runReader, bind
-    , ask, local
+    , ask, asks, local
     )
 
 {-|
@@ -9,10 +9,16 @@ module Monad.Reader exposing
 
 # Reader Monad
 
+Computations which read values from a shared environment.
+
+Binding strategy: Monad values are functions from the environment to a value. The bound function is applied to the bound value, and both have access to the shared environment.
+
+Useful for: Maintaining variable bindings, or other shared environment.
+
 @docs Reader
 @docs return, runReader, bind
 
-@docs ask, local
+@docs ask, asks, local
 
 -}
 
@@ -53,9 +59,16 @@ ask =
     Reader identity
 
 
+{-| Asks the environment to get something
+-}
+asks : (e -> a) -> Reader e a
+asks sel =
+    bind ask <| return << sel
+
+
 {-| Execute a computation in a modified environment
 -}
-local : (a -> b) -> Reader b c -> Reader a c
+local : (e -> e) -> Reader e c -> Reader e c
 local f c =
     Reader <|
         \e ->
