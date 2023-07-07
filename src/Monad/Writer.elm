@@ -8,6 +8,13 @@ module Monad.Writer exposing
 
 # Writer Monad
 
+Computations which produce a stream of data in addition to the computed values.
+
+Binding strategy: A Writer monad value is a (computation value, log value) pair.
+Binding replaces the computation value with the result of applying the bound function to the previous value and appends any log data from the computation to the existing log data.
+
+Useful for: Logging, or other computations that produce output "on the side".
+
 The definition of writer monad in Haskell is
 
     newtype Writer w a = Writer { runWriter :: (a,w) }

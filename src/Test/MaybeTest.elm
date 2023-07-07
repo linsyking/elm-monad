@@ -37,7 +37,7 @@ maternalGrandfatherChain s =
 
 maternalGreatGrandfather : Sheep -> Maybe Sheep
 maternalGreatGrandfather s =
-    mother s 
+    mother s
         |> Maybe.andThen father
         |> Maybe.andThen mother
 
